@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class TaskOneTest {
-    TaskOne t = new TaskOne(true, false);
+    private static TaskOne t = new TaskOne(true, false);
 
     @Test
     public void findLogicConjunction() {
