@@ -13,6 +13,11 @@ public class TaskOne {
         return P1 / P2;
     }
 
+    /**
+     * Визначення факторіалу числа
+     * @param n число для визначення факторіалу
+     * @return факторіал числа <code>n</code>
+     */
     public static int getFactorial(int n) {
         int P = 1;
         for (int i = 1; i <= n; i++) {

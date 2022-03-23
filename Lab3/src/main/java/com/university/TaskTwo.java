@@ -10,10 +10,8 @@ public class TaskTwo {
 
     public static void resolveTask(int n) {
         int[][] F = fillTable(n);
-        F = completeTable(F);
+        completeTable(F);
         printResult(F);
-
-
     }
 
     /**
@@ -54,23 +52,32 @@ public class TaskTwo {
      */
     public static void printResult(int[][] F) {
         int n = F.length;
+        int t = 10 * n;
         System.out.println();
 
-        for (int i = 0; i < 14; i++) {
+        for (int i = 0; i < n; i++) {
+            System.out.printf("%-2d | ", i + 1);
 
-            if (i + 1 < 10) {
-                System.out.print(i + 1 + " | ");
-            }
-            else {
-                System.out.print(i + 1 + "| ");
-            }
-
-            for (int j = 0; j < 14; j++) {
+            for (int j = 0; j < n; j++) {
                 if (j <= i) {
-                    System.out.print(F[i][j] + " ");
+                    System.out.printf("%-12d", F[i][j]);
                 }
             }
-            System.out.println();
+            System.out.print("  | " + getBelle(i, F) + "\n");
         }
+    }
+
+    /**
+     * Знаходження числа Белла
+     * @param i рядок в таблиці чисел Стірлінга
+     * @param F таблиця чисел Стірлінга
+     * @return число Белла рядка таблиці Стірлінга
+     */
+    public static int getBelle(int i, int[][] F) {
+        int bNum = 0;
+        for(int j = 0; j < F.length; j++) {
+            bNum += F[i][j];
+        }
+        return bNum;
     }
 }

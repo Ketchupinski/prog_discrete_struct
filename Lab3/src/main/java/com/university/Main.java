@@ -6,8 +6,8 @@ public class Main {
 
 
         System.out.println("number of all placements without\n" +
-                            "repetitions of n elements on r: " +
-                            TaskOne.resolveTask(7, 3));
+                            "repetitions of 12 elements on 6: " +
+                            TaskOne.resolveTask(12, 6));
 
         TaskTwo.resolveTask(14);
 
