@@ -43,30 +43,25 @@ public class AnalyzeGraph {
         return degArr;
     }
 
-    public int isHomogeneous(int[][] degreeTops) {
-        for(int i = 1; i < degreeTops.length; i++) {
-            if ((i + 1) < degreeTops.length) {
-                if(degreeTops[i][1] != degreeTops[i+1][1]) {
+    public int isHomogeneous(int[][] inDeg, int[][] outDeg) {
+        for(int i = 1; i < inDeg.length; i++) {
+            if ((i + 1) < inDeg.length) {
+                if((inDeg[i][1] != inDeg[i+1][1])
+                    ||
+                   (outDeg[i][1] != outDeg[i+1][1])
+                    ||
+                   (inDeg[i][1] != outDeg[i][1])) {
                     return 0;
                 }
             }
         }
-        return degreeTops[0][1];
+        return inDeg[0][1];
     }
 
-    public int[][] findDegreesOfTops(int[][] degArrIn, int[][] degArrOut) {
-        int[][] degree = new int [degArrIn.length][2];
-        for (int i = 1; i < degree.length; i++) {
-            degree[i][0] = i;
-            degree[i][1] = degArrIn[i][1] + degArrOut[i][1];
-        }
-        return degree;
-    }
-
-    public int[] getHangingTops(int[][] degreeTops) {
-        int[] hanging = new int[degreeTops.length];
-        for (int i = 1; i < degreeTops.length; i++) {
-            if (degreeTops[i][1] == 1) {
+    public int[] getHangingTops(int[][] inDeg, int[][] outDeg) {
+        int[] hanging = new int[inDeg.length];
+        for (int i = 1; i < inDeg.length; i++) {
+            if (inDeg[i][1] == 1 && outDeg[i][1] == 0) {
                 hanging[i] = 1;
             }
             else {
@@ -76,10 +71,10 @@ public class AnalyzeGraph {
         return hanging;
     }
 
-    public int[] getIsolatedTops(int[][] degreeTops) {
-        int[] isolated = new int[degreeTops.length];
-        for (int i = 1; i < degreeTops.length; i++) {
-            if (degreeTops[i][1] == 0) {
+    public int[] getIsolatedTops(int[][] inDeg, int[][] outDeg) {
+        int[] isolated = new int[inDeg.length];
+        for (int i = 1; i < inDeg.length; i++) {
+            if (inDeg[i][1] == 0 && outDeg[i][0] == 0) {
                 isolated[i] = 1;
             }
             else {

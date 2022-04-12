@@ -10,7 +10,7 @@ public class AnalyzeGraphTest {
     public void isHomogeneous() {
         AnalyzeGraph analyze = new AnalyzeGraph();
         int[][] test = {{1, 1}, {2, 1}};
-        int actual = analyze.isHomogeneous(test);
+        int actual = analyze.isHomogeneous(test, test);
         int expected = 1;
         assertEquals(expected, actual);
     }
