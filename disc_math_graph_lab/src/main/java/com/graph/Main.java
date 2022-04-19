@@ -2,10 +2,12 @@ package com.graph;
 
 import com.graph.file.FileService;
 import com.graph.matrix.AdjacencyMatrix;
+import com.graph.matrix.IncidenceMatrix;
 import com.graph.matrix.MatrixService;
 import java.io.IOException;
 import java.nio.file.Path;
 
+import com.graph.matrix.WeightedMatrix;
 import com.graph.search.BFS;
 import com.graph.search.SearchAlgorithmI;
 import com.graph.search.DFS;
@@ -22,18 +24,10 @@ public class Main {
     public static void main(String[] args) throws IOException {
         FileService file = new FileService();
         MatrixService mService = new MatrixService();
-        int[][] matrixInfo = file.getGraphFromFile(Path.of("graph_01_1.txt"));
 
-        AdjacencyMatrix aMatrix = new AdjacencyMatrix(matrixInfo);
-        mService.printMatrix(aMatrix.getMatrix());
-
-        SearchAlgorithmI dSearch = new DFS();
-        dSearch.matrixSearch(aMatrix, 4);
-        dSearch.printResult();
-
-        System.out.println("\n");
-        SearchAlgorithmI bSearch = new BFS();
-        bSearch.matrixSearch(aMatrix, 4);
-        bSearch.printResult();
+        int[][] fileInfo = file.getWeightedGraphFromFile(Path.of("weighted_graph_01.txt"));
+        WeightedMatrix wMatrix = new WeightedMatrix(fileInfo);
+        mService.printMatrix(wMatrix.getMatrix());
+        file.writeMatrixToFile("wMatrix", wMatrix.getMatrix());
     }
 }

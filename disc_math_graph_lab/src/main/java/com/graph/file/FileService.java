@@ -27,7 +27,7 @@ public class FileService {
         int hL = M.length;
         int wL = temp.length;
         fileWriter.write("   | ");
-        for (int i = 1; i < wL; i++){
+        for (int i = 1; i < wL; i++) {
             String string = String.format("%-2d | ", i);
             fileWriter.write(string);
         }
@@ -42,5 +42,22 @@ public class FileService {
             fileWriter.write("\n");
         }
         fileWriter.close();
+    }
+
+    public int[][] getWeightedGraphFromFile(Path path) throws IOException {
+        Scanner scanFile = new Scanner(path);
+        int n = scanFile.nextInt(); // number of vertices of the graph
+        int m = scanFile.nextInt(); // number of edges of the graph
+        int[][] fileGraphInfo = new int[m + 1][3];
+        fileGraphInfo[0][0] = n;
+        fileGraphInfo[0][1] = m;
+        fileGraphInfo[0][2] = 0;
+
+        for (int i = 1; i <= m; i++) {
+            for (int j = 0; j <= 2; j++) {
+                fileGraphInfo[i][j] = scanFile.nextInt();
+            }
+        }
+        return fileGraphInfo;
     }
 }
