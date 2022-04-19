@@ -2,10 +2,17 @@ package com.graph.matrix;
 
 import java.util.Arrays;
 
+/**
+ * Representation of weight matrix
+ * @author Arsen Savshak
+ * @version 1.0
+ */
 public class WeightedMatrix {
     private final int[][] Matrix;
     private final int n;
     private final int m;
+
+    private final int inf = Integer.MAX_VALUE;
 
     public WeightedMatrix(int[][] E) {
         this.n = E[0][0];
@@ -32,7 +39,12 @@ public class WeightedMatrix {
                     A[i][j] = E[iter][2];
                 }
                 else {
-                    A[i][j] = 0;
+                    if (i == j) {
+                        A[i][j] = 0;
+                    }
+                    else {
+                        A[i][j] = inf;
+                    }
                 }
                 isEqual = false;
             }

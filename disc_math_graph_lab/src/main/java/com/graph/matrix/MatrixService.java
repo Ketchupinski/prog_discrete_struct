@@ -1,6 +1,8 @@
 package com.graph.matrix;
 
 public class MatrixService {
+    private final int inf = Integer.MAX_VALUE;
+
     public int[] fillVerticesAsSet(int n) {
         int[] vertices = new int[n + 1];
         for (int i = 1; i <= n; i++) {
@@ -21,7 +23,13 @@ public class MatrixService {
         for (int i = 1; i < hL; i++) {
             System.out.printf("%-2d | ", i);
             for (int j = 1; j < wL; j++) {
-                System.out.printf("%-2d | ", M[i][j]);
+                if (M[i][j] != inf) {
+                    System.out.printf("%-2d | ", M[i][j]);
+                }
+                else {
+                    char symbol = 0x221E;
+                    System.out.printf("%-2c | ", symbol);
+                }
             }
             System.out.println();
         }

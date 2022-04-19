@@ -13,7 +13,7 @@ import java.util.*;
  * @author Arsen Savhsak
  * @version 1.0
  */
-public class DFS implements SearchAlgorithmI {
+public class DFS implements TraversalAlgorithmI {
 
     private String[][] resultTable;
 

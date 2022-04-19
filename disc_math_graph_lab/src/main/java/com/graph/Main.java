@@ -1,16 +1,12 @@
 package com.graph;
 
 import com.graph.file.FileService;
-import com.graph.matrix.AdjacencyMatrix;
-import com.graph.matrix.IncidenceMatrix;
 import com.graph.matrix.MatrixService;
 import java.io.IOException;
 import java.nio.file.Path;
 
 import com.graph.matrix.WeightedMatrix;
-import com.graph.search.BFS;
-import com.graph.search.SearchAlgorithmI;
-import com.graph.search.DFS;
+import com.graph.search.MinPathMatrix;
 
 /**
  * Вивід матриць інцидентності та суміжності. За вимогою користувача програма
@@ -29,5 +25,11 @@ public class Main {
         WeightedMatrix wMatrix = new WeightedMatrix(fileInfo);
         mService.printMatrix(wMatrix.getMatrix());
         file.writeMatrixToFile("wMatrix", wMatrix.getMatrix());
+        MinPathMatrix minPathAlg = new MinPathMatrix(wMatrix);
+        System.out.println("Weight matrix:");
+        mService.printMatrix(minPathAlg.getMinWeightMatrix());
+        System.out.println("Path matrix:");
+        mService.printMatrix(minPathAlg.getPathMatrix());
+        System.out.println("Path:" + minPathAlg.getPath(4, 7));
     }
 }

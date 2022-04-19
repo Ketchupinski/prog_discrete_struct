@@ -13,7 +13,7 @@ import java.util.*;
  * @author Arsen Savshak
  * @version 1.0
  */
-public class BFS implements SearchAlgorithmI {
+public class BFS implements TraversalAlgorithmI {
     String[][] resultTable;
 
     @Override

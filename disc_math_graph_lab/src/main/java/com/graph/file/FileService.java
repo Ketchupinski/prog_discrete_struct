@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.util.Scanner;
 
 public class FileService {
+    private final int inf = Integer.MAX_VALUE;
     public int[][] getGraphFromFile(Path path) throws IOException {
         Scanner scanFile = new Scanner(path);
         int n = scanFile.nextInt(); // number of vertices of the graph
@@ -36,8 +37,15 @@ public class FileService {
             String string = String.format("%-2d | ", i);
             fileWriter.write(string);
             for (int j = 1; j < wL; j++) {
-                String str = String.format("%-2d | ", M[i][j]);
-                fileWriter.write(str);
+                if (M[i][j] != inf) {
+                    String str = String.format("%-2d | ", M[i][j]);
+                    fileWriter.write(str);
+                } else {
+                    char symbol = 0x221E;
+                    String str = String.format("%-2c | ", symbol);
+                    fileWriter.write(str);
+                }
+
             }
             fileWriter.write("\n");
         }
