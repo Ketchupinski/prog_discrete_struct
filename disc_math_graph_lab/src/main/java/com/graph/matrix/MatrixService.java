@@ -46,7 +46,13 @@ public class MatrixService {
     public void printTopsResult(int[] result, String string) {
         System.out.print(string + ": ");
         for (int i = 1; i < result.length; i++) {
-            System.out.print("{V" + i + ": " + result[i] + "} ");
+            if (result[i] == Integer.MAX_VALUE) {
+                char symbol = 0x221E;
+                System.out.print("{V" + i + ": " + symbol + "} ");
+            }
+            else {
+                System.out.print("{V" + i + ": " + result[i] + "} ");
+            }
         }
         System.out.println();
     }
