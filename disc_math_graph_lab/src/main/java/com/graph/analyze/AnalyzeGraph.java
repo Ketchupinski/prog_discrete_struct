@@ -13,9 +13,7 @@ public class AnalyzeGraph {
         for (int i = 1; i <= n; i++) {
             deg = 0;
             for (int j = 1; j <= n; j++) {
-                if (M[i][j] == 1) {
-                    deg++;
-                }
+                deg += M[i][j];
             }
             degArr[i][0] = i;
             degArr[i][1] = deg;
@@ -33,9 +31,7 @@ public class AnalyzeGraph {
         for (int i = 1; i <= n; i++) {
             deg = 0;
             for (int j = 1; j <= n; j++) {
-                if (M[j][i] == 1) {
-                    deg++;
-                }
+                deg += M[i][j];
             }
             degArr[i][0] = i;
             degArr[i][1] = deg;

@@ -1,4 +1,4 @@
-package com.graph.search;
+package com.graph.algorithms;
 
 import com.graph.matrix.AdjacencyMatrix;
 
