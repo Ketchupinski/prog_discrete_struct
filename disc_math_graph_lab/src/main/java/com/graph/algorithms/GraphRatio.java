@@ -46,6 +46,7 @@ public class GraphRatio {
         return true;
     }
 
+
     public boolean isSymmetrical() {
         return isSymmetrical;
     }
